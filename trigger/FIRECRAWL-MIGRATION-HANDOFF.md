@@ -1,9 +1,16 @@
 # Trigger.dev → Firecrawl Migration
 
 **Date:** 2026-05-13  
-**Status:** Ready to execute  
+**Status:** Historical proposal (superseded)
+
 **Repo:** `research-process-builder/trigger/`  
 **Prereq:** `FIRECRAWL_API_KEY` added to Trigger.dev environments (prod/staging/dev)
+
+Current Trigger code uses the direct HTTP and Spider waterfall in
+`src/pipeline/scrape.ts`. The v1 examples below are retained as historical context.
+For new Firecrawl integrations, use the
+[v2 migration guide](https://docs.firecrawl.dev/migrate-to-v2).
+The local research agent in `scripts/agent_research.py` uses v2.
 
 ---
 

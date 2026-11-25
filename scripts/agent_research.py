@@ -70,7 +70,14 @@ def firecrawl_scrape(url: str, timeout_ms: int = 30_000) -> str | None:
         resp = requests.post(
             f"{FC_BASE}/scrape",
             headers={"Authorization": f"Bearer {FIRECRAWL_KEY}", "Content-Type": "application/json"},
-            json={"url": url, "formats": ["markdown"], "onlyMainContent": True},
+            json={
+                "url": url,
+                "formats": ["markdown"],
+                "onlyMainContent": True,
+                # Preserve v1's fresh scrape and finish before the client deadline.
+                "maxAge": 0,
+                "timeout": timeout_ms,
+            },
             timeout=timeout_ms / 1000 + 5,
         )
         resp.raise_for_status()
